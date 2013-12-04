@@ -7,9 +7,9 @@
 
 using std::vector;
 
-// Класс для хранения и обработки состояния игрового поля.
-// Элементами поля могут быть положительные целые числа (не обязательно различные),
-// камни (Position::STONE) и пустые места( Position::BLANK).
+// РљР»Р°СЃСЃ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ Рё РѕР±СЂР°Р±РѕС‚РєРё СЃРѕСЃС‚РѕСЏРЅРёСЏ РёРіСЂРѕРІРѕРіРѕ РїРѕР»СЏ.
+// Р­Р»РµРјРµРЅС‚Р°РјРё РїРѕР»СЏ РјРѕРіСѓС‚ Р±С‹С‚СЊ РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Рµ С†РµР»С‹Рµ С‡РёСЃР»Р° (РЅРµ РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ СЂР°Р·Р»РёС‡РЅС‹Рµ),
+// РєР°РјРЅРё (Position::STONE) Рё РїСѓСЃС‚С‹Рµ РјРµСЃС‚Р°( Position::BLANK).
 class Position {
 public:
     struct Move;
@@ -25,7 +25,7 @@ public:
     bool operator==( const Position& operand) const;
     bool operator!=( const Position& operand) const;
     bool operator<( const Position& operand) const;
-	// Делает move_count случайных допустимых ходов.
+	// Р”РµР»Р°РµС‚ move_count СЃР»СѓС‡Р°Р№РЅС‹С… РґРѕРїСѓСЃС‚РёРјС‹С… С…РѕРґРѕРІ.
     void Shuffle( int move_count);
     Position GetShuffled( int step_count) const;
     vector<Move> GetPossibleMoves() const;
@@ -33,13 +33,13 @@ public:
     void Swap( int from, int to);
     Position GetSwaped( int vfrom, int gfrom, int vto, int gto) const;
     Position GetSwaped( int from, int to) const;
-	// Сверка двух позиций на подобность (все камни совпадают,
-	// кол-ва элементов с одним и тем же номером совполают).
+	// РЎРІРµСЂРєР° РґРІСѓС… РїРѕР·РёС†РёР№ РЅР° РїРѕРґРѕР±РЅРѕСЃС‚СЊ (РІСЃРµ РєР°РјРЅРё СЃРѕРІРїР°РґР°СЋС‚,
+	// РєРѕР»-РІР° СЌР»РµРјРµРЅС‚РѕРІ СЃ РѕРґРЅРёРј Рё С‚РµРј Р¶Рµ РЅРѕРјРµСЂРѕРј СЃРѕРІРїРѕР»Р°СЋС‚).
     bool IsSimular( const Position& to) const;
-	// Эвристическая оценка расстония до вершины to)
+	// Р­РІСЂРёСЃС‚РёС‡РµСЃРєР°СЏ РѕС†РµРЅРєР° СЂР°СЃСЃС‚РѕРЅРёСЏ РґРѕ РІРµСЂС€РёРЅС‹ to)
     int Distance( const Position& to) const;
-	// То же, что и Distance, но работает быстрее, за счет использования
-	// информации с предыдущего хода
+	// РўРѕ Р¶Рµ, С‡С‚Рѕ Рё Distance, РЅРѕ СЂР°Р±РѕС‚Р°РµС‚ Р±С‹СЃС‚СЂРµРµ, Р·Р° СЃС‡РµС‚ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ
+	// РёРЅС„РѕСЂРјР°С†РёРё СЃ РїСЂРµРґС‹РґСѓС‰РµРіРѕ С…РѕРґР°
     int UpdateDistance( const Position& to, int old_distance, int move_from, int move_to) const;
 	int Height() const {return height_;}
 	int Width() const {return width_;}
